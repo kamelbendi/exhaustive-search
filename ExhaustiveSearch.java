@@ -68,8 +68,11 @@ public class ExhaustiveSearch {
 
             // Solve the Traveling Salesman Problem
             ExhaustiveSearch solver = new ExhaustiveSearch(matrix);
+            double times = 0;
+            times = System.currentTimeMillis();
             solver.solve();
-
+            times = System.currentTimeMillis() - times;
+            System.out.println("Execution Time: " + times);
             scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
