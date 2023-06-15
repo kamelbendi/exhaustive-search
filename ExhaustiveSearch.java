@@ -18,7 +18,7 @@ public class ExhaustiveSearch {
     public void solve() {
         int[] tour = new int[numCities];
         boolean[] visited = new boolean[numCities];
-        tour[0] = 0;  // Start from city 0
+        tour[0] = 0; // Start from city 0
         visited[0] = true;
         findBestTour(tour, visited, 1, 0);
 
@@ -32,7 +32,7 @@ public class ExhaustiveSearch {
 
     private void findBestTour(int[] tour, boolean[] visited, int depth, int currentLength) {
         if (depth == numCities) {
-            int length = currentLength + distances[tour[depth - 1]][0];  // Add distance back to city 0
+            int length = currentLength + distances[tour[depth - 1]][0]; // Add distance back to city 0
             if (length < bestTourLength) {
                 bestTourLength = length;
                 System.arraycopy(tour, 0, bestTour, 0, numCities);
@@ -54,7 +54,7 @@ public class ExhaustiveSearch {
     public static void main(String[] args) {
         try {
             // Read matrix from file
-            File file = new File("./g13.txt");
+            File file = new File("./g4.txt");
             Scanner scanner = new Scanner(file);
 
             int size = scanner.nextInt();
@@ -69,9 +69,9 @@ public class ExhaustiveSearch {
             // Solve the Traveling Salesman Problem
             ExhaustiveSearch solver = new ExhaustiveSearch(matrix);
             double times = 0;
-            times = System.currentTimeMillis();
+            times = System.nanoTime();
             solver.solve();
-            times = System.currentTimeMillis() - times;
+            times = System.nanoTime() - times;
             System.out.println("Execution Time: " + times);
             scanner.close();
         } catch (FileNotFoundException e) {
